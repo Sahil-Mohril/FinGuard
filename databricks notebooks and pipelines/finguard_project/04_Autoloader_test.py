@@ -1,11 +1,8 @@
 # Databricks notebook source
 source_path='/Volumes/finguard/source/fraud_watchlist/source_data/'
 
-# COMMAND ----------
-
 dbutils.fs.ls(source_path)
-
-# COMMAND ----------
+-
 
 input_stream=(spark.readStream
               .format("cloudFiles")
@@ -16,7 +13,6 @@ input_stream=(spark.readStream
 )
 
 
-# COMMAND ----------
 
 from pyspark.sql import functions as F
 tranformed_df=input_stream.select(
@@ -24,8 +20,6 @@ tranformed_df=input_stream.select(
 F.col("_metadata.file_path").alias("file_path"),
 F.current_timestamp().alias("ingestion_timestamp")
 )
-
-# COMMAND ----------
 
 streaming_query=(tranformed_df.writeStream.format("delta")
 .outputMode("Append")

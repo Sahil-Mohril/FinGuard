@@ -30,25 +30,23 @@ subject = "Test Email from Databricks"
 
 print(subject)
 
-# COMMAND ----------
+
 
 gmail_api_key = dbutils.secrets.get(
             scope="finguard-scope",
             key="gmail_api_key"
         )
 
-# COMMAND ----------
 
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # Gmail account
-EMAIL = "youremail@gmail.com"
+EMAIL = "sahilmohril@gmail.com"
 APP_PASSWORD = gmail_api_key
 
-# Receiver
-to_email = "youremail@gmail.com"
+to_email = "sahilmohril@gmail.com"
 
 # Create message
 msg = MIMEMultipart()
